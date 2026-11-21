@@ -1,0 +1,16 @@
+services:
+  clangd-lsp:
+    build: ./language-server
+    environment:
+      HOST: 0.0.0.0
+      PORT: 6061
+      MAX_SESSIONS: 4
+      # Add the production domain here when deploying over HTTPS/WSS.
+      ALLOWED_ORIGINS: ${CLANGD_ALLOWED_ORIGINS:-http://localhost:3000,http://127.0.0.1:3000}
+    ports:
+      - "127.0.0.1:6061:6061"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 64
+    mem_limit: 1536m

@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #083b86;
+  --color-brand-light: #0ea5e9;
+}
+
+@layer base {
+  :root { color-scheme: light; }
+  html { scroll-behavior: smooth; }
+  body { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+  button, a, select { cursor: pointer; }
+  button:disabled { cursor: not-allowed; opacity: .55; }
+}
+
+/* Các class ngữ nghĩa của các module cũ được triển khai bằng @apply của Tailwind.
+   Component mới (Header, Footer, Button, Input, Editor, ProblemCard) sử dụng utility trực tiếp. */
+@layer components {
+  .container { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-12 md:py-16; }
+  .section-soft { @apply bg-slate-50; }
+  .narrow { @apply max-w-4xl; }
+  .grid { @apply grid gap-5 lg:gap-6; }
+  .grid-2 { @apply grid-cols-1 md:grid-cols-2; }
+  .grid-3 { @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3; }
+  .grid-4 { @apply grid-cols-1 sm:grid-cols-2 xl:grid-cols-4; }
+  .stack { @apply grid gap-4; }
+  .flex-center { @apply flex flex-wrap items-center gap-2.5; }
+  .section-title { @apply mb-8 text-center; }
+  .section-title h2 { @apply mb-3 text-3xl font-extrabold tracking-tight text-blue-950 md:text-4xl; }
+  .section-title p { @apply mx-auto max-w-2xl text-slate-500; }
+  .muted, .subheading { @apply text-slate-500; }
+  .subheading { @apply mb-4 text-sm; }
+  .mini { @apply text-xs text-slate-500; }
+  .link { @apply font-semibold text-sky-600 hover:underline; }
+  .card { @apply overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm; }
+  .card-body { @apply p-5 md:p-6; }
+  .card-title { @apply mb-2 text-lg font-bold text-blue-950 md:text-xl; }
+  .card-text { @apply mb-4 text-sm leading-6 text-slate-500; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition-colors; }
+  .btn-primary { @apply bg-sky-500 text-white shadow-sm hover:bg-blue-800; }
+  .btn-outline { @apply border border-slate-200 bg-white text-blue-900 hover:border-sky-500 hover:text-sky-600; }
+  .btn-dark { @apply bg-blue-950 text-white hover:bg-blue-900; }
+  .btn-danger { @apply bg-red-50 text-red-700 hover:bg-red-100; }
+  .btn-success { @apply bg-green-50 text-green-700 hover:bg-green-100; }
+  .btn-warning { @apply bg-amber-50 text-amber-700 hover:bg-amber-100; }
+  .btn-sm { @apply rounded-lg px-3 py-1.5 text-xs; }
+  .pill { @apply inline-flex items-center gap-1.5 rounded-full bg-sky-50 px-3 py-1.5 text-xs font-semibold text-blue-900; }
+  .pill.gray { @apply bg-slate-100 text-slate-600; }
+  .pill.green { @apply bg-green-100 text-green-800; }
+  .pill.orange { @apply bg-amber-100 text-amber-800; }
+  .pill.red { @apply bg-red-100 text-red-800; }
+  .pill-row { @apply flex flex-wrap gap-2; }
+  .banner { @apply bg-gradient-to-r from-blue-950 via-blue-900 to-sky-700 py-10 text-white md:py-14; }
+  .banner h1 { @apply mb-2 text-3xl font-extrabold tracking-tight md:text-4xl; }
+  .banner p { @apply max-w-3xl text-sky-100; }
+  .toolbar { @apply mb-6 flex flex-wrap items-center justify-between gap-4; }
+  .search-box { @apply flex flex-1 flex-wrap gap-2 rounded-2xl border border-slate-200 bg-white p-2 shadow-sm; }
+  .search-box input, .search-box select { @apply min-w-40 flex-1 rounded-xl border-0 bg-transparent px-3 py-2 text-sm outline-none focus:bg-sky-50; }
+  .problem-card { @apply grid grid-cols-1 items-center gap-4 p-5 md:grid-cols-[1fr_auto] hover:border-sky-300 hover:shadow-md transition; }
+  .problem-meta { @apply mt-3 flex flex-wrap gap-2; }
+  .tabs { @apply flex items-center gap-1 overflow-x-auto border-b border-slate-200; }
+  .tab { @apply shrink-0 border-b-[3px] border-transparent px-4 py-3 text-sm font-semibold text-slate-500 hover:text-blue-800; }
+  .tab.active { @apply border-sky-500 text-blue-900; }
+  .split-layout { @apply grid grid-cols-1 items-start gap-5 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]; }
+  .statement h2 { @apply mb-3 text-lg font-bold text-blue-950; }
+  .statement h3 { @apply mt-4 mb-2 font-bold text-blue-950; }
+  .content-text { @apply whitespace-pre-wrap leading-7 text-slate-700; }
+  .content-text p { @apply mb-3; }
+  .content-text ul { @apply ml-5 list-disc; }
+  .content-text ol { @apply ml-5 list-decimal; }
+  .content-text pre { @apply overflow-x-auto rounded-lg bg-slate-100 p-3 text-sm; }
+  .example-box, .sample { @apply overflow-x-auto whitespace-pre-wrap rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm; }
+  .editor-card { @apply overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 text-slate-200; }
+  .editor-toolbar { @apply flex flex-wrap items-center justify-between gap-2 border-b border-slate-700 bg-slate-900 p-3; }
+  .editor-toolbar select { @apply w-auto border-slate-700 bg-slate-800 text-slate-100; }
+  .editor-body { @apply min-h-80 overflow-auto font-mono text-sm; }
+  .console { @apply overflow-x-auto whitespace-pre-wrap rounded-xl bg-slate-900 p-4 font-mono text-sm text-slate-200; }
+  .result-panel { @apply mt-4 rounded-xl border border-slate-200 bg-white p-4; }
+  .testcase { @apply mb-3 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-3.5; }
+  .table-wrap { @apply overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm; }
+  .table-wrap table, table { @apply w-full min-w-[700px] border-collapse; }
+  table th { @apply bg-slate-50 text-left text-xs font-bold uppercase tracking-wide text-blue-900; }
+  table td, table th { @apply border-b border-slate-100 px-4 py-3.5; }
+  table tr:last-child td { @apply border-b-0; }
+  table tr:hover td { @apply bg-slate-50/70; }
+  .error { @apply rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700; }
+  .success { @apply rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700; }
+  .empty { @apply rounded-2xl border border-dashed border-slate-200 bg-white p-8 text-center text-sm text-slate-500; }
+  .status-cell { @apply font-semibold; }
+  .status-cell.AC { @apply text-green-700; }
+  .status-cell.WA, .status-cell.RE, .status-cell.SE { @apply text-red-600; }
+  .status-cell.TLE, .status-cell.MLE { @apply text-amber-700; }
+  .status-cell.CE { @apply text-orange-700; }
+  .status-cell.PENDING, .status-cell.JUDGING { @apply text-sky-700; }
+  .form-shell { @apply grid min-h-screen place-items-center bg-gradient-to-br from-sky-50 via-white to-blue-50 px-4 py-10; }
+  .auth-card { @apply w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-blue-950/10 sm:p-9; }
+  .auth-card h2 { @apply mb-6 text-center text-2xl font-extrabold text-blue-950; }
+  .form-group { @apply mb-4; }
+  .form-group label { @apply mb-1.5 block text-sm font-semibold text-slate-700; }
+  .input, .form-group input, textarea, select { @apply w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100; }
+  textarea { @apply min-h-28 resize-y; }
+  .form-grid { @apply grid grid-cols-1 gap-4 md:grid-cols-2; }
+  .auth-switch { @apply mt-4 text-center text-sm text-slate-500; }
+  .auth-switch a { @apply font-semibold text-sky-600 hover:underline; }
+  .field { @apply my-4 block w-full; }
+  .field label { @apply mb-2 block text-sm font-semibold; }
+  .hint { @apply text-xs text-slate-500; }
+  .form-message { @apply mt-3; }
+  .inline-actions { @apply my-3 flex flex-wrap gap-2; }
+  .dashboard-grid, .stat-grid { @apply grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4; }
+  .dashboard-grid .card { @apply p-5; }
+  .dashboard-grid b { @apply block text-3xl font-bold text-blue-950; }
+  .side-card { @apply p-5; }
+  .stat-pill, .public-mark { @apply inline-flex rounded-full bg-sky-100 px-3 py-1.5 text-xs font-semibold text-sky-900; }
+  .small-pad { @apply px-5 py-3; }
+  .subcard { @apply mb-3 rounded-xl border border-slate-200 bg-white p-4; }
+  .role-label { @apply ml-2 text-xs text-slate-400; }
+  .create-layout { @apply grid grid-cols-1 gap-5 lg:grid-cols-[1fr_320px]; }
+  .side-panel { @apply lg:sticky lg:top-24; }
+  .option-grid { @apply grid grid-cols-1 gap-3 sm:grid-cols-3; }
+  .option-card { @apply rounded-xl border border-slate-200 bg-white p-4; }
+  .option-card strong { @apply block font-bold text-blue-950; }
+  .checklist li { @apply mb-3 text-sm text-slate-600; }
+  .checklist li::before { content: "✓"; @apply mr-2 font-bold text-green-600; }
+  .stat-card { @apply rounded-2xl border border-slate-200 bg-white p-5 shadow-sm; }
+  .stat-card span { @apply text-sm font-semibold text-slate-500; }
+  .stat-card strong { @apply mt-2 block text-3xl font-bold text-blue-950; }
+  .admin-actions { @apply flex flex-wrap gap-2; }
+  .modal-card { @apply rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-5; }
+  .admin-layout { @apply grid grid-cols-1 lg:grid-cols-[260px_1fr]; }
+  .admin-sidebar { @apply bg-slate-900 p-5 text-slate-200; }
+  .admin-nav a { @apply mb-2 flex items-center gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-blue-800; }
+  .admin-nav a.active { @apply bg-blue-800 text-white; }
+  .admin-main { @apply min-w-0; }
+  .admin-topbar { @apply flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4; }
+  .admin-content { @apply p-4 lg:p-7; }
+  .admin-title h1 { @apply text-3xl font-bold text-blue-950; }
+  .admin-title p { @apply text-sm text-slate-500; }
+  .badge { @apply inline-flex rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700; }
+  .badge.active { @apply bg-green-100 text-green-800; }
+  .badge.lock { @apply bg-red-100 text-red-800; }
+  .badge.draft { @apply bg-amber-100 text-amber-800; }
+  .rank { @apply grid size-9 place-items-center rounded-lg bg-sky-50 font-bold text-blue-900; }
+  .rank.top { @apply bg-amber-100 text-amber-900; }
+  .score { @apply font-bold text-blue-950; }
+  .hero { @apply relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-slate-950 py-16 text-white lg:py-24; }
+  .hero-grid { @apply relative z-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]; }
+  .hero h1 { @apply mb-6 text-4xl leading-tight font-extrabold tracking-tight sm:text-5xl lg:text-6xl; }
+  .hero p { @apply mb-7 max-w-2xl text-base leading-8 text-sky-100 md:text-lg; }
+  .eyebrow { @apply mb-5 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold tracking-wide text-white; }
+  .hero-actions { @apply flex flex-wrap gap-3; }
+  .hero-card { @apply rounded-3xl border border-white/15 bg-white/10 p-5 shadow-2xl backdrop-blur-sm; }
+  .terminal { @apply overflow-x-auto rounded-2xl bg-slate-950 p-5 font-mono text-sm text-slate-200; }
+  .terminal-top { @apply mb-5 flex gap-2; }
+  .dot { @apply size-2.5 rounded-full bg-red-400; }
+  .dot:nth-child(2) { @apply bg-amber-400; }
+  .dot:nth-child(3) { @apply bg-green-400; }
+  .code-line { @apply my-1.5 whitespace-nowrap; }
+  .code-key { @apply text-sky-300; }
+  .code-func { @apply text-amber-200; }
+  .code-ok { @apply text-green-300; }
+  .metric-row { @apply mt-4 grid grid-cols-2 gap-3; }
+  .metric { @apply rounded-2xl bg-white/10 p-3 text-center; }
+  .metric strong { @apply block text-xl font-bold text-white; }
+  .metric span { @apply text-xs text-sky-100; }
+  .course-card { @apply transition-transform hover:-translate-y-1; }
+  .course-thumb { @apply relative flex h-40 items-center justify-center bg-gradient-to-br from-sky-100 to-blue-100; }
+  .course-thumb::before { content: "</>"; @apply text-5xl font-extrabold text-blue-200; }
+  .rating { @apply mb-2 text-sm text-amber-500; }
+  .owner { @apply flex items-center gap-2 text-sm font-semibold text-blue-900; }
+  .owner img, .avatar-sm { @apply grid size-9 shrink-0 place-items-center rounded-full bg-sky-100 text-blue-900; }
+  .price { @apply mt-4 flex items-center gap-3; }
+  .price-new { @apply text-lg font-bold text-blue-950; }
+  .price-old { @apply text-sm text-slate-400 line-through; }
+  .progress-bar { @apply h-2 overflow-hidden rounded-full bg-slate-200; }
+  .progress-bar span { @apply block h-full rounded-full bg-sky-500; }
+  .easy { @apply text-green-600; }
+  .medium { @apply text-amber-600; }
+  .hard { @apply text-red-600; }
+  .status-dot { @apply mr-2 inline-block size-2.5 rounded-full bg-green-500; }
+  .status-dot.fail { @apply bg-red-500; }
+  .test-row { @apply grid grid-cols-1 gap-3 sm:grid-cols-2; }
+  .test-row pre { @apply m-0; }
+  .post { @apply grid grid-cols-[72px_1fr] gap-4; }
+  .datebox { @apply grid h-18 place-items-center rounded-xl bg-sky-50 text-center font-bold text-blue-950; }
+  .datebox span { @apply block text-xs text-slate-500; }
+  .blog-image { @apply grid h-44 place-items-center rounded-2xl bg-gradient-to-br from-blue-100 to-cyan-100 text-4xl text-blue-300; }
+  .hover-row:hover { @apply bg-slate-50; }
+  .role-label { @apply text-slate-500; }
+}
+
+/* Nội dung HTML tĩnh của các trang di sản và Monaco giữ CSS tối thiểu. */
+.legacy-static { min-height: 60vh; }
+.legacy-static img { max-width: 100%; height: auto; }
+.editor-card .monaco-editor { min-height: 390px; }

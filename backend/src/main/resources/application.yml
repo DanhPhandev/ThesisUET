@@ -1,0 +1,31 @@
+server:
+  port: ${PORT:8080}
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/course}
+    username: ${DB_USER:admin}
+    password: ${DB_PASSWORD:123456}
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  jackson:
+    time-zone: UTC
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+app:
+  jwt-secret: ${JWT_SECRET:change_this_dev_only_secret_to_random_64_chars_1234567890}
+  avatar-dir: ${AVATAR_DIR:./uploads/avatars}
+  google:
+    client-id: ${GOOGLE_CLIENT_ID:}
+  secure-cookie: ${SECURE_COOKIE:false}
+  judge0-url: ${JUDGE0_URL:http://localhost:2358}
+  admin-email: ${ADMIN_EMAIL:}
+  admin-password: ${ADMIN_PASSWORD:}
+  seed-practice-problems: ${SEED_PRACTICE_PROBLEMS:true}

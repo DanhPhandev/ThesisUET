@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "uet-dem-so-chan",
+    "title": "Đếm số chẵn trong mảng",
+    "difficulty": "EASY",
+    "tag": "array",
+    "testCount": 8,
+    "sampleCount": 2,
+    "timeLimitMs": 1000
+  },
+  {
+    "slug": "uet-chuoi-doi-xung",
+    "title": "Kiểm tra chuỗi đối xứng",
+    "difficulty": "EASY",
+    "tag": "string",
+    "testCount": 8,
+    "sampleCount": 2,
+    "timeLimitMs": 1000
+  },
+  {
+    "slug": "uet-ucln-cua-n-so",
+    "title": "Ước chung lớn nhất của N số",
+    "difficulty": "EASY",
+    "tag": "math",
+    "testCount": 8,
+    "sampleCount": 2,
+    "timeLimitMs": 1000
+  },
+  {
+    "slug": "uet-tong-doan-prefix",
+    "title": "Tổng đoạn con bằng Prefix Sum",
+    "difficulty": "MEDIUM",
+    "tag": "prefix-sum",
+    "testCount": 8,
+    "sampleCount": 2,
+    "timeLimitMs": 1500
+  },
+  {
+    "slug": "uet-ngoac-hop-le",
+    "title": "Dãy ngoặc hợp lệ bằng Stack",
+    "difficulty": "MEDIUM",
+    "tag": "stack",
+    "testCount": 8,
+    "sampleCount": 2,
+    "timeLimitMs": 1000
+  },
+  {
+    "slug": "uet-tim-vi-tri-dau-tien",
+    "title": "Tìm vị trí đầu tiên bằng Binary Search",
+    "difficulty": "MEDIUM",
+    "tag": "binary-search",
+    "testCount": 8,
+    "sampleCount": 2,
+    "timeLimitMs": 1500
+  },
+  {
+    "slug": "uet-chon-lich-hop",
+    "title": "Chọn số cuộc họp tối đa",
+    "difficulty": "MEDIUM",
+    "tag": "greedy",
+    "testCount": 8,
+    "sampleCount": 2,
+    "timeLimitMs": 1500
+  },
+  {
+    "slug": "uet-bfs-duong-di-ngan-nhat",
+    "title": "BFS: Đường đi ngắn nhất trên đồ thị",
+    "difficulty": "MEDIUM",
+    "tag": "graph",
+    "testCount": 8,
+    "sampleCount": 2,
+    "timeLimitMs": 2000
+  },
+  {
+    "slug": "uet-segment-tree-rmq",
+    "title": "Segment Tree: Cập nhật điểm, tìm giá trị nhỏ nhất",
+    "difficulty": "HARD",
+    "tag": "segment-tree",
+    "testCount": 8,
+    "sampleCount": 2,
+    "timeLimitMs": 2000
+  },
+  {
+    "slug": "uet-balo-01",
+    "title": "Quy hoạch động: Balo 0/1",
+    "difficulty": "HARD",
+    "tag": "dp",
+    "testCount": 8,
+    "sampleCount": 2,
+    "timeLimitMs": 2500
+  }
+]
